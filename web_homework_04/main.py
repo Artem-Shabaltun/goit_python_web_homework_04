@@ -7,7 +7,6 @@ from pathlib import Path
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from threading import Thread
 from datetime import datetime
-import os
 
 BASE_DIR = Path()
 BUFFER_SIZE = 1024
@@ -67,17 +66,6 @@ class GoitFramework(BaseHTTPRequestHandler):
         with open(f'static/{filename}', 'rb') as file:
             self.wfile.write(file.read())
 
-# def save_data_from_form(data):
-#     # Запис даних з форми в data.json
-#     parse_data = urllib.parse.unquote_plus(data.decode())
-#     try:
-#         parse_dict = {key: value for key, value in [el.split('=') for el in parse_data.split('&')]}
-#         with open('storage/data.json', 'w', encoding='utf-8') as file:
-#             json.dump(parse_dict, file, ensure_ascii=False, indent=4)
-#     except ValueError as err:
-#         logging.error(err)
-#     except OSError as err:
-#         logging.error(err)
 def save_data_from_form(data):
     parse_data = urllib.parse.unquote_plus(data.decode())
     try:
